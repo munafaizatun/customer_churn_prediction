@@ -1,65 +1,63 @@
-# Customer Churn Prediction & Targeted Discounts
+# SmartChurn: Targeted Discounts for Customer Retention
 
-## Overview
-Customer churn is a major threat to long-term profitability for utility companies. In this project, I tackled this business challenge by predicting which customers are likely to leave and assessing strategies to retain them using machine learning.
+## Project Overview
+SmartChurn is a machine learning project that tackles customer churn prediction for a utility company. The goal is not only to predict which customers are likely to leave but also to generate actionable business insights through targeted interventions, such as a 20% discount.
 
-This project is based on the [BCG Data Science job simulation on The Forage](https://www.theforage.com/simulations/bcg/data-science-ccdz), providing a real-world, industry-relevant scenario.
+This project mirrors the type of problems solved at BCG X, highlighting the intersection of **data science and business strategy**.  
 
-## Problem Statement
-High churn rates can significantly impact revenue. The goal was to:
-
-- Predict which customers are at risk of leaving
-- Identify key drivers behind churn
-- Simulate financial outcomes of targeted interventions, such as a 20% discount
+For more details on the simulation, visit the official BCG Data Science job simulation on The Forage:  
+[BCG Data Science Simulation](https://www.theforage.com/simulations/bcg/data-science-ccdz)
 
 ## Dataset
 - **14,606 customers**, **63 features**
-- Features include consumption patterns, pricing, usage history, and customer attributes
-- Target: `churn` (whether the customer leaves)
-- Key columns:  
-  - `cons_12m`, `cons_gas_12m` – annual consumption  
-  - `forecast_price_energy_*` – predicted energy prices  
-  - `has_gas` – gas usage indicator  
-  - `id` – customer identifier  
+- Key columns:
+  - `churn` – target variable indicating customer churn
+  - `cons_12m`, `cons_gas_12m` – annual consumption data
+  - `forecast_price_energy_*` – predicted energy prices
+  - `has_gas` – gas usage indicator
+  - `id` – customer identifier
+
+*Source: Proprietary simulated dataset for predictive modeling*
 
 ## Data Preparation
-- Removed irrelevant columns (`id`, `Unnamed: 0`)  
-- Separated features (`X`) and target (`y`)  
-- Encoded categorical features (`has_gas`)  
-- Engineered price-related features to simulate discount scenarios  
+- Removed irrelevant columns (`id`, `Unnamed: 0`)
+- Separated features (`X`) and target (`y`)
+- Encoded categorical variables (`has_gas`)
+- Engineered price-related features for discount simulation
 
-Final dataset: **61 predictive features across 14,606 customers**
+**Final dataset:** 61 predictive features across 14,606 customers
 
 ## Exploratory Data Analysis (EDA)
-Through EDA, I explored:
+EDA focused on understanding:
+- Distribution of consumption patterns
+- Relationships between pricing and churn
+- Data quality and missing values
+- Correlations to select predictive features
 
-- Consumption patterns across customers  
-- Relationships between pricing and churn  
-- Data quality, missing values, and initial correlations  
-
-These insights guided feature selection and engineering.
+*Insights from EDA informed feature engineering and model design.*
 
 ## Modeling
-I trained a **Random Forest Classifier** with **Stratified 5-Fold Cross-Validation**:
+**Random Forest Classifier** with **Stratified 5-Fold Cross-Validation**:
 
-- Handles nonlinear relationships and noisy data  
-- Provides interpretable feature importance  
+- Handles nonlinear relationships and noisy data
+- Provides interpretable feature importance
+- Metrics tracked: Precision, Recall, Accuracy
 
 **Performance Highlights:**
-
-- Overall Accuracy: ~91%  
-- Recall for churners: ~7% (common in imbalanced datasets)  
-- Top predictive features: energy consumption, pricing variations, usage history
+- Overall Accuracy: ~91%
+- Recall for churners: ~7% (common in imbalanced datasets)
+- Most predictive features: energy consumption, pricing variations, usage history
 
 ## Business Impact: Targeted Discounts
-To simulate actionable interventions, I applied a **20% discount scenario**:
+To assess actionable interventions, a 20% discount scenario was simulated:
 
-- Expected Profit = Probability of Staying × Customer Profit  
-- Only ~3% of customers benefit from discounts  
-- Among predicted churners, targeted discounts increase profit for 58 customers (+21.7 units total)  
-- Strategic discounting improves profitability without reducing prices for all customers  
+- Calculated expected profit before and after discount:
+  `Expected Profit = Probability of Staying × Customer Profit`
+- Observed that only ~3% of customers benefit from discounts
+- Among predicted churners, targeted discounts increased profit for 58 customers, adding ~21.7 units in total
+- Strategic targeting of high-risk churners improves profitability without blanket price reductions
 
 ## Conclusion
-This project demonstrates a complete machine learning workflow: from data preparation and EDA to modeling, evaluation, and business simulation.  
+This project demonstrates a complete **end-to-end machine learning workflow**: data preprocessing, EDA, feature engineering, modeling, evaluation, and business simulation.  
 
-It illustrates how predictive analytics can inform **strategic business decisions**, helping companies retain high-risk customers and improve profitability.
+**Impact:** actionable insights for customer retention strategies, showing how predictive analytics can directly inform business decisions.
