@@ -5,8 +5,7 @@ SmartChurn is a machine learning project that tackles customer churn prediction 
 
 This project mirrors the type of problems solved at BCG X, highlighting the intersection of **data science and business strategy**.  
 
-For more details on the simulation, visit the official BCG Data Science job simulation on The Forage:  
-[BCG Data Science Simulation](https://www.theforage.com/simulations/bcg/data-science-ccdz)
+For more details on the simulation, visit the official BCG Data Science job simulation on The Forage: [BCG Data Science Simulation](https://www.theforage.com/simulations/bcg/data-science-ccdz)
 
 ## Dataset
 - **14,606 customers**, **63 features**
