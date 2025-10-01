@@ -1,62 +1,111 @@
-# SmartChurn: Targeted Discounts for Customer Retention
+# SmartChurn: Targeted Discounts for Customer Retention  
 
-## Project Overview
-SmartChurn is a machine learning project that tackles customer churn prediction for a utility company. The goal is not only to predict which customers are likely to leave but also to generate actionable business insights through targeted interventions, such as a 20% discount.
+## Project Overview  
+SmartChurn is a machine learning project addressing **customer churn prediction** for a utility company.  
+The objective is twofold:  
+1. **Predict which customers are likely to churn**  
+2. **Simulate targeted interventions** (e.g., 20% discount) to evaluate profitability and retention.  
 
-This project mirrors the type of problems solved at BCG X, highlighting the intersection of **data science and business strategy**.  
+This project mirrors the type of problems solved at **BCG X**, where data science meets **business strategy**.  
 
-For more details on the simulation, visit the official BCG Data Science job simulation on The Forage: [BCG Data Science Simulation](https://www.theforage.com/simulations/bcg/data-science-ccdz)
+Reference: [BCG Data Science Simulation – The Forage](https://www.theforage.com)  
 
-## Dataset
-- **14,606 customers**, **63 features**
-- Key columns:
-  - `churn` – target variable indicating customer churn
-  - `cons_12m`, `cons_gas_12m` – annual consumption data
-  - `forecast_price_energy_*` – predicted energy prices
-  - `has_gas` – gas usage indicator
-  - `id` – customer identifier
 
-*Source: Proprietary simulated dataset for predictive modeling*
 
-## Data Preparation
-- Removed irrelevant columns (`id`, `Unnamed: 0`)
-- Separated features (`X`) and target (`y`)
-- Encoded categorical variables (`has_gas`)
-- Engineered price-related features for discount simulation
+## Dataset  
+- **Size:** 14,606 customers  
+- **Features:** 63 columns (61 predictive after preprocessing)  
+- **Target:** `churn` (1 = churn, 0 = stay)  
+- **Key Columns:**  
+  - `cons_12m`, `cons_gas_12m` → annual energy/gas consumption  
+  - `forecast_price_energy_*` → predicted energy prices  
+  - `has_gas` → binary gas usage indicator  
+  - `id` → customer identifier  
 
-**Final dataset:** 61 predictive features across 14,606 customers
+**Source:** Proprietary simulated dataset for predictive modeling.  
 
-## Exploratory Data Analysis (EDA)
-EDA focused on understanding:
-- Distribution of consumption patterns
-- Relationships between pricing and churn
-- Data quality and missing values
-- Correlations to select predictive features
 
-*Insights from EDA informed feature engineering and model design.*
 
-## Modeling
-**Random Forest Classifier** with **Stratified 5-Fold Cross-Validation**:
+## Data Preparation  
+Steps:  
+- Dropped irrelevant columns (`id`, `Unnamed: 0`)  
+- Encoded categorical variables (`has_gas`)  
+- Engineered **price-related features** for discount simulation  
+- Split target (`y`) and features (`X`)  
 
-- Handles nonlinear relationships and noisy data
-- Provides interpretable feature importance
-- Metrics tracked: Precision, Recall, Accuracy
+Final dataset: **61 predictive features × 14,606 customers**  
 
-**Performance Highlights:**
-- Overall Accuracy: ~91%
-- Recall for churners: ~7% (common in imbalanced datasets)
-- Most predictive features: energy consumption, pricing variations, usage history
 
-## Business Impact: Targeted Discounts
-To assess actionable interventions, a 20% discount scenario was simulated:
 
-- Calculated expected profit before and after discount:
-  `Expected Profit = Probability of Staying × Customer Profit`
-- Observed that only ~3% of customers benefit from discounts
-- Among predicted churners, targeted discounts increased profit for 58 customers, adding ~21.7 units in total
-- Strategic targeting of high-risk churners improves profitability without blanket price reductions
+## Exploratory Data Analysis (EDA)  
+EDA explored:  
+- Distribution of consumption patterns  
+- Pricing vs churn relationships  
+- Correlations among pricing & contract features  
+- Missing values and quality checks  
 
-## Conclusion
-This project demonstrates a complete **end-to-end machine learning workflow**: data preprocessing, EDA, feature engineering, modeling, evaluation, and business simulation.  
+**Outcome:** Informed feature engineering and model selection.  
 
-**Impact:** actionable insights for customer retention strategies, showing how predictive analytics can directly inform business decisions.
+
+
+## Modeling: Random Forest  
+We trained a **Random Forest Classifier** with **5-fold stratified cross-validation**.  
+
+### Why Random Forest?  
+- Captures non-linear relationships  
+- Robust to noise  
+- Provides interpretable feature importance  
+
+**Performance Results:**  
+- Accuracy: ~91%  
+- Precision (churners): ~82%  
+- Recall (churners): ~7% (imbalance issue)  
+
+The model predicts non-churners very well but struggles to detect churners (critical business risk).  
+
+**Key Drivers of Churn:** contract length, pricing features, modification history.  
+
+
+
+## Business Simulation: 20% Discount  
+We simulated **two scenarios** per customer:  
+1. **No Discount** – baseline churn probability & profit  
+2. **20% Discount** – energy-related prices reduced by 20% → updated churn probability  
+
+### Key Findings:  
+- Only ~3% of customers show profit increase under discount  
+- Among predicted churners:  
+  - 58 customers → profit increased (+21.7 units total)  
+  - 63 customers → profit decreased (−0.05 units)  
+- **Net Effect:** +21.7 units extra profit, but **concentrated in a small high-risk segment**  
+
+Discounts are **not universally effective**, but **highly effective when targeted**.  
+
+
+
+## Visual Insights  
+- **Churn Probability Distribution:** discounts slightly reduce churn risk, but not uniformly.  
+- **Expected Profit Comparison:** most customers unchanged, but some churn-prone customers yield higher profit.  
+- **Customer Segmentation:**  
+  - High churn probability + positive ΔProfit = **ideal discount targets**  
+  - Negative ΔProfit = **avoid discounts**  
+
+
+
+## Business Impact & Recommendations  
+1. **Don’t apply discounts broadly** → wasteful & low ROI  
+2. **Targeted retention works**: offer discounts only to churn-prone, profit-positive customers  
+3. **Next steps**:  
+   - Improve recall (SMOTE, cost-sensitive learning)  
+   - Automate discount targeting in production pipeline
+
+
+
+## Conclusion  
+SmartChurn demonstrates a **complete end-to-end ML workflow**:  
+- Data preprocessing  
+- EDA & feature engineering  
+- Model training & evaluation  
+- Business simulation & strategy  
+
+**Impact:** Predictive analytics can directly inform retention strategies — preventing revenue loss while optimizing discount spending.  
