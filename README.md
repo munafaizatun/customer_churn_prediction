@@ -4,30 +4,33 @@
 Customer churn is a major challenge for utility companies, directly impacting revenue and growth.  
 
 **SmartChurn** uses machine learning to:  
-1. Predict which customers are at risk of leaving.  
-2. Simulate business interventions (e.g., 20% discount) to measure retention and profitability.  
+1. Predict which customers are at risk of leaving  
+2. Simulate business interventions (e.g., 20% discount) to measure retention and profitability  
 
-This project shows how **data science can directly shape business strategy**.  
+This project demonstrates how **data science can directly inform business strategy and optimize revenue.**
 
 
 ## Key Results  
 - **Model Performance**  
   - Accuracy: ~91%  
-  - Precision (churners): ~82%  
-  - Recall (churners): ~7% → model misses many true churners  
+  - Precision (churners): ~81%  
+  - Recall (churners): ~6% → model misses many true churners  
 
 - **Discount Simulation (20% energy price cut)**  
-  - Only ~3% of customers show profit increase under discount  
-  - Among churn-prone customers:  
-    - 58 → profit increased (+21.7 units)  
-    - 63 → profit decreased (−0.05 units)  
-  - **Net effect:** small but positive, concentrated in high-risk segments  
-
+  - Only ~2.6% of customers show benefit from the discount
+  - Among predicted churners:  
+    - 54 → profit increased (+14.85 units) 
+    - 60 → profit decreased (−0.04 units)  
+  - **Net effect:** small but positive, concentrated among high-risk customers
+- **Visual Analysis**
+  - **Churn probability shifts slightly downward** for some customers, highlighting targeted retention impact.
+  - **Expected profit plot:** most customers unaffected, but a subset of churn-prone customers benefit.
+  - **Customer segmentation:** high churn probability + positive ΔProfit → ideal discount targets. 
 
 ## Business Impact  
 - Broad discounts are ineffective → lower revenue with little retention gain 
 - Targeted discounts work → focus on high churn risk + positive profit impact  
-- Discounts can be transformed into a **precision retention strategy**  
+- Provides a **precision retention framework**, optimizing resource allocation and maximizing business value  
 
 
 Full notebook & analysis: [SmartChurn Project](projects/customer_churn_prediction.html)  
