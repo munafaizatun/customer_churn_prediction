@@ -33,4 +33,4 @@ This project demonstrates how **data science can directly inform business strate
 - Provides a **precision retention framework**, optimizing resource allocation and maximizing business value  
 
 
-Full notebook & analysis: [SmartChurn Project](projects/smart-churn.html)  
+Full notebook & analysis: [SmartChurn Project](https://github.com/munafaizatun/munafaizatun.github.io/tree/main/projects))  
