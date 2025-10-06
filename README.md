@@ -32,5 +32,3 @@ This project demonstrates how **data science can directly inform business strate
 - Targeted discounts work → focus on high churn risk + positive profit impact  
 - Provides a **precision retention framework**, optimizing resource allocation and maximizing business value  
 
-
-Full notebook & analysis: [SmartChurn Project](https://munafaizatun.github.io/projects/smart-churn.html) 
