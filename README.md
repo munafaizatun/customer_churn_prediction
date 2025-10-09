@@ -45,10 +45,10 @@ Targeted discounts on high-risk customers can increase profit, while broad disco
 
 ## Business Impact  
 
-**Targeted retention works**  
+**Targeted retention works:**  
 Focus incentives on customers with high churn risk **and** positive profit impact.  
 
-**Broad discounts fail**  
+**Broad discounts fail:**  
 They reduce margins without significantly improving retention.  
 
 **Outcome:**  
