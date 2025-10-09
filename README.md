@@ -1,34 +1,61 @@
 # SmartChurn: Targeted Discounts for Customer Retention  
 
 ## Overview  
-Customer churn is a major challenge for utility companies, directly impacting revenue and growth.  
-
-**SmartChurn** uses machine learning to:  
-1. Predict which customers are at risk of leaving  
-2. Simulate business interventions (e.g., 20% discount) to measure retention and profitability  
-
-This project demonstrates how **data science can directly inform business strategy and optimize revenue.**
+Customer churn is a major challenge for utility companies, directly impacting both **revenue stability** and **growth**.  
 
 
-## Key Results  
-- **Model Performance**  
-  - Accuracy: ~91%  
-  - Precision (churners): ~81%  
-  - Recall (churners): ~6% → model misses many true churners  
+**SmartChurn** leverages **machine learning** to:  
+1. Predict customers most at risk of churning.  
+2. Simulate targeted retention strategies (e.g., 20% discounts).  
+3. Quantify financial impact — identifying when retention efforts are profitable.  
 
-- **Discount Simulation (20% energy price cut)**  
-  - Only ~2.6% of customers show benefit from the discount
-  - Among predicted churners:  
-    - 54 → profit increased (+14.85 units) 
-    - 60 → profit decreased (−0.04 units)  
-  - **Net effect:** small but positive, concentrated among high-risk customers
-- **Visual Analysis**
-  - **Churn probability shifts slightly downward** for some customers, highlighting targeted retention impact.
-  - **Expected profit plot:** most customers unaffected, but a subset of churn-prone customers benefit.
-  - **Customer segmentation:** high churn probability + positive ΔProfit → ideal discount targets. 
+This project demonstrates how **data science can directly inform business strategy** and guide **precision retention** decisions.  
+
+
+## Modeling Approach  
+
+- **Algorithm:** Random Forest Classifier (1,000 estimators)  
+- **Data:** ~14,600 customers, 61 engineered features  
+- **Validation:** 5-fold stratified cross-validation  
+
+| Metric | Score |
+|---------|--------|
+| Accuracy | ~91% |
+| Precision (Churners) | ~81% |
+| Recall (Churners) | ~6% |
+
+The model is highly precise (few false positives), meaning when it flags a customer as high-risk, it’s usually right — ideal for **targeted interventions**.  
+
+
+## Discount Simulation (20% Energy Price Cut)
+
+Simulated how a **20% price reduction** affects churn and profitability.
+
+| Metric | Result |
+|---------|--------|
+| Customers benefiting from discount | ~2.6% |
+| Predicted churners | 114 |
+| Profit increased (churners) | 54 |
+| Profit decreased (churners) | 60 |
+| **Net profit change** | **+14.85 units** |
+
+**Key Insight:**  
+Targeted discounts on high-risk customers can increase profit, while broad discounts erode margins.
+
 
 ## Business Impact  
-- Broad discounts are ineffective → lower revenue with little retention gain 
-- Targeted discounts work → focus on high churn risk + positive profit impact  
-- Provides a **precision retention framework**, optimizing resource allocation and maximizing business value  
 
+**Targeted retention works**  
+Focus incentives on customers with high churn risk **and** positive profit impact.  
+
+**Broad discounts fail**  
+They reduce margins without significantly improving retention.  
+
+**Outcome:**  
+A precision-driven customer retention framework — maximizing both **profitability** and **customer loyalty**.
+
+
+## Conclusion  
+
+SmartChurn proves how **predictive modeling + business simulation** can transform raw data into actionable, profit-driven strategies.  
+By targeting only high-risk customers, companies can achieve **higher ROI on retention campaigns** with minimal resource waste.
